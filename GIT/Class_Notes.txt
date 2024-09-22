@@ -1,0 +1,236 @@
+		
+#######################
+Day 2 - 22nd Sep. 2024
+#######################				
+
+
+	Version Conrol System - Using GIT 
+		
+	Using DevOps Approach :::				
+	
+		1. Create Source Code 		*.java 
+		2. Save the Source Code in the Source Code Repository(github)		
+			
+	Developer :::
+	
+	Create a index.html 
+	
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory
+	Test the changes 
+			
+	<html>
+	----
+	-adfasdf
+	-asdfsdf
+	-
+	-
+	-
+	-----
+	ensuree
+	ee
+	ee
+	</html>			
+
+	save as index.html in a directory
+	Test the changes		
+	
+	
+	Version Control System ::
+	
+		- Is used to Version Control the Source Code Changes 
+		- Is used to track the Changes 
+
+
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory 		# index.html_v1.0	--> Version Number/Tags/Commit_Id
+	Test the changes 
+
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory 		# index.html_v1.1
+	Test the changes 
+		
+	Types of Version Control System :::
+	
+	
+		Local VCS 
+		
+		Centralized VCS 
+		
+		Distributed VCS 
+		
+		
+		
+	GIT ::
+	
+		- Is a Open-Source Distributed VCS 
+		- Is used to Version Control the Source Code Changes 
+		- Is used to track the Changes 
+		- Is used to perform parallel Development - Using Branching Techniques
+		
+		
+		
+	Repository ::
+	
+		- Collection of Folders and Files.
+		
+		
+	GIT Repository ::: Distributed VCS
+	
+	Local Repository & Remote Repository 
+	
+	Remote Repository :::	
+	
+		github 
+		AWS CodeCommit 
+		Azure Repo 
+		gitlab
+		bit-bucket		
+		
+	Local Repository ::
+	
+		GIT Client 
+	
+	
+	GIT Repository :::
+	
+	Application Architecture :::
+	
+		- Micro-Service based application 
+		
+			- for each Micro-Service we create a source code repository.
+						
+	Using GitHub we can share the Files and Folders 	
+	
+	Create github repo for your batch 
+	
+	
+	GIT - Distributed VCS :::
+	
+	Local Machine 																		Remote Server 	
+
+	Repo																				Repo
+	
+	
+	GIT File WorkFlow  == 60% 
+	
+	Git Cli Command 
+	
+	Git branching Techniques
+	
+	Remote Repositories
+	
+	
+	
+	Developers;
+	
+	Workload of Developers??
+	
+	
+	- Enhancement_Projects / Bugfixing Project 	==> Source Code Repo is already present in the remote server
+	
+	- New Project 								==> Create New Repo in local machine and publish to remote repository	
+	
+		
+	GIT File WorkFlow:::
+	
+	Local Machine 																									Remote Server 
+
+	Install GIT Client
+	
+
+	Working Directory 						Staging Area						Local Repository						Remote Repository
+	                                                                                                            
+	index.html			------------>		index.html		------------->		index.html_v1.0    ------------->             index.html_v1.0
+						  git add                             git commit                             git push               
+	index.html			------------>		index.html		------------->		index.html_v1.1    ------------->             index.html_v1.1
+						  git add                             git commit                             git push               
+	index.html			------------>		index.html		------------->		index.html_v1.2    ------------->             index.html_v1.2
+						  git add                             git commit                             git push               
+	index.html			------------>		index.html		------------->		index.html_v1.3    ------------->             index.html_v1.3
+						  git add                             git commit                             git push               
+	index.html			------------>		index.html		------------->		index.html_v1.4    ------------->             index.html_v1.4
+						  git add                             git commit                             git push
+		
+		
+
+
+	git add 				# To Add the changes from working directory to staging area 
+	
+	git commit 				# To Commit the changes from Staging area to Local Repository
+	
+	
+	git push				# To Push the changes from Local Repository to Remote Repository
+	
+	
+	git clone				# To Clone/Copy the entire Remote repository from Remote Server to Local Machine
+	
+	git fetch/pull
+		==> Both git fetch and git pull are used to handle the incremental changes from remote repository
+		
+		git fetch 			
+							# To just check for the incremental changes from remote repository, if there is any incremental changes exist, it will update the details only in the Local Repository. git fetch will not update any changes into the working directory.
+							
+							Upon fetch to merge the changes from local repository to working directory, we need used git merge or git pull
+							
+		git pull 			
+							# To check for the incremental changes from remote repository, if there is any incremental changes exist, it will update all the incremental changes in the Local Repository as well in the working directory.	
+
+							git pull = git fetch + git merge 
+
+
+	Fork					# Copy of one remote repository to another remote repository
+	
+#parent remote repo -- fork to -- child remote repo --> pull to ur local 
+
+
+
+
+	Install GIT Client :		# https://git-scm.com/downloads
+	
+	
+	
+		Windows Machine :
+		
+			- GIT Bash 			# Based on Linux Command 		-- Recommended 
+			
+			- GIT CMD 			# Based on Powershell
+			
+			- GIT GUI
+			
+			
+	Open Git Bash / Terminal
+	
+	git --version				# To check the version of git installed in the local machine
+	
+	
+- Install git client 
+
+- Focus on Linux Fundamentals - Pre-requisites
