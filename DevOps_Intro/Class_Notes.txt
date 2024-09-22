@@ -1,0 +1,600 @@
+DevOps Certification Programme!
+
+Orientation Session : 14th Sep. 2024 - 1Hr.
+
+Regular Session - Start Date ->  21st Sep. 2024
+
+Timing : 7AM - 10AM IST - Weekends - Sat&Sun
+
+#######################
+Day 1 - 21st Sep. 2024
+#######################
+
+	Introduction to DevOps :::
+	
+	
+	What is DevOps ?
+	
+	
+	Software / Applications 
+	
+	IT 
+	
+	SDLC - Software Development Life Cycle ::
+	
+		Software :
+		
+			Desktop Applications
+			
+			Web Applications
+			
+			Mobile Applications 
+			
+			Embedded Applications
+	
+	SDLC - Software Development Life Cycle ::
+	
+		Requirement Analysis 
+		
+		Design & Document 
+		
+		Code / Development 
+		
+		Test 
+		
+		Implementation 
+		
+		Monitor/Maintain
+		
+	
+		
+		
+	Waterfall Model :::
+		-> Linear in fashion
+		-> Follows Top-Down Approach
+		-> It was used to Develop Monolith Applications
+		-> Cannot have any new changes during the development phase.
+		
+	
+		Requirement Analysis 		
+		Design & Document 		
+		Code / Development 		
+		Test 		
+		Implementation 		
+		Monitor/Maintain
+		
+	Desktop Applications : 
+	
+		--> SuperMarket Billing System
+		
+				- Functions 
+					- User Interface - Login page, transation ---
+					- Stock Maintainence 
+					- Payment 
+						- Cash Payment Mode 
+						- Card Payment Mode + UPI Payment 
+					- Inventory Management 
+					- Billing 
+					
+	Waterfall Model :::
+	
+		Core_Project:
+			Requirement Analysis 	===> 	11 Months to deliver this product	
+			Design & Document 		
+			Code / Development 			-->  6th month of project 	
+			Test 		
+			Implementation 		
+			Monitor/Maintain
+			
+		Enhancement_Project:
+			Requirement Analysis 	
+			Design & Document 		
+			Code / Development 			
+			Test 		
+			Implementation 		
+			Monitor/Maintain
+			
+	
+	AGILE Methodologies ::
+		--> The Entire application is splitted into various Function/Modules - Iterations
+	
+		--> SuperMarket Billing System
+		
+		
+				- Functions 
+					- User Interface - Login page, transation ---
+					- Stock Maintainence 
+					- Payment 
+						- Cash Payment Mode 
+						- Card Payment Mode + UPI Payment 
+					- Inventory Management 
+					- Billing 
+
+
+	Iteration 1 :				User Interface			
+		Requirement Analysis 	
+		Design & Document 		
+		Code / Development 			
+		Test 		
+		Implementation with proper approvals	
+
+
+	Iteration 2 :				Stock Maintainence 			
+		Requirement Analysis 	
+		Design & Document 		
+		Code / Development 			
+		Test 		
+		Implementation 	 with proper approvals	
+	
+
+		
+	Iteration 3 :				Cash Payment Mode 			
+		Requirement Analysis 	
+		Design & Document 		
+		Code / Development 			
+		Test 		
+		Implementation 	 with proper approvals	
+	
+
+		
+	Iteration 4 :				Card Payment Mode 			
+		Requirement Analysis 	
+		Design & Document 		
+		Code / Development 			
+		Test 		
+		Implementation 	 with proper approvals	
+	
+
+		
+	Iteration nth :				New Requirements 			
+		Requirement Analysis 	
+		Design & Document 		
+		Code / Development 			
+		Test 		
+		Implementation  with proper approvals	
+		
+		
+		Using AGILE Methodologies:
+			We can able to Achieve ::
+			
+				Continuous Development 
+				Continuous Integration
+				Continuous Testing 
+				Continuous Delivery
+					- It expect manual approvals for production release 
+				
+			We CANNOT Achieve ::
+			
+				Continuous Deployment
+					- It never expect any manual approvals for production release
+					- Production deployment can be fully automated.
+					
+					
+	DevOps :::
+				
+		DevOps is a Software Development Strategy, which is used to promote the collaboration between the teams like Development Teams and the Operations Teams to achieve Continuous Development, Continuous Integration, Continuous Testing, Continuous Delivery, Continuous Deployment and Continuous Monitoring in more automated fashion.
+		
+		
+	How to Implement DevOps :::
+	
+		Teams ::
+		
+			DevOps Team 
+				Infra-Structure Management Team 		--> Role ? Create Servers & Configure the Servers
+				Applications Development Team 
+				Testing Team 
+				Release Management 
+				Production Support Team 
+				Production Monitoring Team 
+				IT Security Team 
+				
+		Environments :::
+		
+			Non-Prod Environments																Production Environments
+			
+				Dev Environment
+				
+				Build Environment
+				
+				Test Environment
+				
+					QA 
+					
+					UAT 						==============>		Staging_Env		=====>				Production Servers1,2,3,4,5,6
+					
+		
+		Various Stages of DevOps :::
+
+			Continuous Development ::
+			
+				- It is the capability of any development team to continuously develop the software products
+				- It is mainly focused on improving the Developers' Productivity.
+				
+				Role of Developer ???
+				
+					Understand the design document and create the source codes
+					
+					1. Create Source Code 		*.java 
+					2. Build the Source Code 	
+							--> Application Build - is process of compiling the source code and create artifacts(Binaries - *.exec/*.war)
+					3. Create Artifacts 
+					4. Unit Testing 
+					5. Promote the Artifacts to Testing Environments
+					6. Manually send notification to testing Team
+					
+				Using DevOps Approach :::				
+				
+					1. Create Source Code 		*.java 
+					2. Save the Source Code in the Source Code Repository(github)
+					
+					Using DevOps Automation Process:
+					
+					Automate :::
+					
+						Build the Source Code 	
+						Create Artifacts 
+						Unit Testing 
+						Promote the Artifacts to Testing Environments
+						Send notification to testing Team
+
+				Tools:
+					
+					IDEs - Integrated Development Environment - Eclipse, Pycharm, Visual Studio, Visual Studio Code 
+					Source Code Management System - git / github 
+
+						
+								
+			Continuous Integration ::
+			
+				- It is the capability of any development team to continuously Integrate their changes for further testing
+				
+					Automate :::
+					
+						Build the Source Code 	
+						Create Artifacts 
+						Unit Testing 
+						Promote the Artifacts to Testing Environments
+						Send notification to testing Team	
+
+				Tools :
+					IDEs - Integrated Development Environment - Eclipse, Pycharm, Visual Studio, Visual Studio Code 
+					Source Code Management System - git / github	
+					
+					Jenkins, Build Tools - Maven,Gradle, Ansible, Docker, Kubernetes 
+					
+			
+			
+			Continuous Testing ::
+			
+				- It is the capability of any Testing Team to continuously Test the changes
+				
+				- Create the Test Cases, Test Data 
+				
+				Tools :
+					Testing Tools - Junit/TestNG/Selenium 					
+					Jenkins
+			
+				
+			
+			Continuous Delivery/Deployment ::
+
+				Continuous Delivery :
+					- It expect manual approvals for production release because of its application nature
+					- Manual intervension for production release 
+					- There might be some downtime during production release
+
+
+				Eg.: 
+				
+				Banking Domain!
+				
+					--> Online banking/Online Credit Card Transacations 
+					
+					Production Deployment/Release Window ::
+					
+						4hrs - 6hrs	==> Non-Business hours 
+						
+						banking_App:v1.1 -- LIVE 
+						
+						banking_App:v1.2				==> Released 
+						
+							- fix the issue within the release window 
+							
+							- revert actions
+
+							
+				Continuous Deployment:
+					- It never expect any manual approvals for production release
+					- Production deployment can be fully automated.	
+					- This can be achieved only with the Micro-Service Based Application Architecture
+					- Without any downtime we can do production releases - ZERO Downtime
+
+				Eg.: 
+				
+					Facebook/Netflex/Google/Amazon 
+				
+				
+				www.amazon.com :::
+				
+				
+				user_sign_up	- Micro-service1 	-> developer1 - Independently code,test and promote the changes to QA/UAT, release to prod
+				Sign_in			- Micro-service2 	-> developer2 - Independently code,test and promote the changes to QA/UAT, release to prod
+				search 
+				add to card 
+				chk review 
+				make payment 
+				confirm order 
+				track 
+				
+
+				sign_in_sv1 --> Prod_Server1,2,3,4,5,6,7,8,9,10			LIVE 
+				
+				Replicas of sign_in_sv1 will be deployed on all the prod servers 
+				
+				sign_in_sv2 --> Prod_Server1
+					- Deployment Strategies 
+					
+						-- Rolling Update Strategy 
+				
+
+				Application Architecture :::
+				
+					Monolith Application Architecture ::
+					
+						- It is Tightly Coupled Applications
+						- All the functions are created any deployed as a whole application
+					
+					
+					Micro-Service Based Application Architecture
+						- Loosely coupled Application
+						- Each and every function will be considered as a micro-service of that application
+						- Each Micro-Service can be independently developed, tested and implemented to production
+						
+				Tools ::
+				
+					Jenkins, Ansible, Docker, Kubernetes
+					 
+				CI/CD ==> Continuous Integration and Continuous Delivery/Deployment
+			
+			
+			Continuous Monitoring :::
+			
+				- Used to Continuously Monitor the Production Environments and Applications to ensure high availability and business Continuity
+				- Completely owned and managed by the Production Monitoring Team
+				
+				
+				Infra-Structure Monitoring 	:::
+				
+					--> CPU/Memory/Network Traffic 
+					
+					Monitoring Tools : Prometheus/Grafana/Dynatrace 
+				
+				Application Monitoring :::
+				
+					--> Application Responses 
+					
+						Upstream/DownStream Dependencies --> Database Queries 
+						
+					Application Monitoring Tools : AppDynamics/DataDog
+					
+					
+			Infra-Structure Management Team :::
+			
+					IAC - Infra-Structure As Code 
+				
+				Provision/Create the Resources 		--> Terraform/CF/ARM
+				
+				Configure the Resources 			--> Ansible/Chef/Puppet 
+				
+			
+			
+	
+Next :::
+
+		DevOps Tools 
+		
+		DevOps Lifecycle 
+		
+		Lab Setup & Class_Notes Access
+		
+		GIT 
+				
+		
+#######################
+Day 2 - 22nd Sep. 2024
+#######################			
+			
+	DevOps Tools ::
+	
+		- Open Source DevOps Tools 
+		
+			- git/jenkin/docker/ansible/kubernetes/terraform/prometheus/grafana
+		
+		- Managed Services from service providers 
+		
+			AWS 	--> AWS CodeBuild,CodeDeploy,CodePipeline
+			
+			Azure 	--> Azure DevOps Services 
+			
+			GCP 	--> GCP DevOps Services
+			
+	
+	DevOps LifeCycle ::
+	
+		- SCM Check_out --> Build --> Unit Testing --> Promote the Changes to further Testing --> Release to Prod --> Monitor
+																					
+		
+	Overall DevOps Implementation ::
+	
+		
+	DevOps :::
+				
+		DevOps is a Software Development Strategy, which is used to promote the collaboration between the teams like Development Teams and the Operations Teams to achieve Continuous Development, Continuous Integration, Continuous Testing, Continuous Delivery, Continuous Deployment and Continuous Monitoring in more automated fashion.
+		
+		
+	DevOps is based on the :
+	
+		People ****
+		
+		Process 
+		
+		Tools 
+		
+		To Implement Continuous Improvement :::
+		
+		DevOps Assessment 
+		
+			On-Prem
+			Hybrid 	==> On-prem + Cloud
+			Cloud Environment 
+			Multi-Cloud Environments
+			Multi-Cloud / Hybrid Environments 
+			
+		
+		
+#######################
+Day 2 - 22nd Sep. 2024
+#######################				
+
+
+	Version Conrol System - Using GIT 
+		
+	Using DevOps Approach :::				
+	
+		1. Create Source Code 		*.java 
+		2. Save the Source Code in the Source Code Repository(github)		
+			
+	Developer :::
+	
+	Create a index.html 
+	
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory
+	Test the changes 
+			
+	<html>
+	----
+	-adfasdf
+	-asdfsdf
+	-
+	-
+	-
+	-----
+	ensuree
+	ee
+	ee
+	</html>			
+
+	save as index.html in a directory
+	Test the changes		
+	
+	
+	Version Control System ::
+	
+		- Is used to Version Control the Source Code Changes 
+		- Is used to track the Changes 
+
+
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory 		# index.html_v1.0	--> Version Number/Tags/Commit_Id
+	Test the changes 
+
+	<html>
+	----
+	-
+	-
+	-
+	-
+	-
+	-----
+	</html>
+	
+	save as index.html in a directory 		# index.html_v1.1
+	Test the changes 
+		
+	Types of Version Control System :::
+	
+	
+		Local VCS 
+		
+		Centralized VCS 
+		
+		Distributed VCS 
+		
+		
+		
+	GIT ::
+	
+		- Is a Open-Source Distributed VCS 
+		- Is used to Version Control the Source Code Changes 
+		- Is used to track the Changes 
+		- Is used to perform parallel Development - Using Branching Techniques
+		
+		
+		
+	Repository ::
+	
+		- Collection of Folders and Files.
+		
+		
+	GIT Repository ::: Distributed VCS
+	
+	Local Repository & Remote Repository 
+	
+	Remote Repository :::
+	
+	
+		github 
+		AWS CodeCommit 
+		Azure Repo 
+		gitlab
+		bit-bucket
+		
+		
+	Local Repository ::
+	
+		GIT Client 
+	
+	
+	GIT Repository :::
+	
+	Application Architecture :::
+	
+		- Micro-Service based application 
+		
+			- for each Micro-Service we create a source code repository.
+			
+
+			
+	Using GitHub we can share the Files and Folders 	
+	
+	Create github repo for your batch 
+	
+	
+	
+	
+	
+		
+	
+				
+		
+		
+
