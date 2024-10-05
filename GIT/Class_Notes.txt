@@ -1503,3 +1503,217 @@ Next :::
 		git remote repos :::
 		
 		Jenkins!
+
+
+	
+#######################
+Day 5 - 5th Oct. 2024
+#######################				
+		
+	git remote repos :::
+		
+	Distributed VCS :
+
+	Developers;
+	
+	Workload of Developers??
+	
+	
+	- Enhancement_Projects / Bugfixing Project 	==> Source Code Repo is already present in the remote server
+	
+	- New Project 								==> Create New Repo in local machine and publish to remote repository	
+	
+
+
+		
+	Local Repos 			
+			
+	Remote Repos
+		- Remote GIT Server -> github/gitlab/AzRepo/AWS Code-Commit/bitbucket
+	
+	
+	
+	
+	git add 				# To Add the changes from working directory to staging area 
+	
+	git commit 				# To Commit the changes from Staging area to Local Repository
+	
+	
+	git push				# To Push the changes from Local Repository to Remote Repository
+	
+	
+	git clone				# To Clone/Copy the entire Remote repository from Remote Server to Local Machine
+	
+	git fetch/pull
+		==> Both git fetch and git pull are used to handle the incremental changes from remote repository
+		
+		git fetch 			
+							# To just check for the incremental changes from remote repository, if there is any incremental changes exist, it will update the details only in the Local Repository. git fetch will not update any changes into the working directory.
+							
+							Upon fetch to merge the changes from local repository to working directory, we need used git merge or git pull
+							
+		git pull 			
+							# To check for the incremental changes from remote repository, if there is any incremental changes exist, it will update all the incremental changes in the Local Repository as well in the working directory.	
+
+							git pull = git fetch + git merge 
+	
+
+
+	GITHUB :::
+	
+	Pull Request :::
+	
+		- Developer working in feature branch 
+		
+			- Pull Requests are created by the developers and assigned to the reviewer for approval.
+	
+
+	
+	Working Directory 						Staging Area						Local Repository						Remote Repository
+	                                                                                                            
+						  git add                             git commit                             git push               
+	index.html			------------>		index.html		------------->		index.html_v1.1    ------------->             index.html_v1.1
+			
+			
+			
+		from local machine to access remote repos, we need repo clone url
+		
+		https://github.com/Edu-DCP-Sep21-2024/testrepo1.git
+		
+		git clone https://github.com/Edu-DCP-Sep21-2024/testrepo1.git
+		
+		
+		git remote -v			# Used to get the list of remote repos linked to the local repository
+		
+		git remote add origin https://github.com/Edu-DCP-Sep21-2024/testrepo2.git		# To link the remote repo to local repo
+		
+		git remote remove origin
+		
+	
+		
+		git push -u origin local-featurel		# Push the changes from local repository to remote repo	
+												# -u tag is used to identify the credentials used to update the remote repo
+												# Need github access token as password 
+												
+		git branch -M master					# Rename the Branch 
+		
+		git branch -D feature1					# Delete the Branch
+		
+	Working with New Repo from Local Machine :
+	
+	
+		1. Create Empty remote git repository 
+		
+		2. Push the local repo changes to remote repo. 
+		
+		
+Summary :
+
+	git file workflow 
+	
+	git cmds 
+	
+	git branch strategies 
+	
+	rebase 
+	
+	stash 
+	
+	remote repos 
+	
+  501  cd d:
+  502  ls
+  503  cd Edu_Sep21_DCP/
+  504  ls
+  505  clear
+  506  ls
+  507  mkdir remoterepos
+  508  cd remoterepos/
+  509  clear
+  510  ls
+  511  git clone https://github.com/Edu-DCP-Sep21-2024/testrepo1.git
+  512  ls
+  513  cd testrepo1/
+  514  clear
+  515  ls
+  516  git log --oneline
+  517  git status
+  518  git remote -v
+  519  clear
+  520  git branch
+  521  git branch local-featurel
+  522  git branch
+  523  git switch local-featurel
+  524  ls
+  525  git status
+  526  git log --oneline
+  527  echo "rec1" >> local-file1.txt
+  528  git add .
+  529  git commit -m "Created local-file1 from local-feature1"
+  530  git log --oneline
+  531  git status
+  532  git push -u origin local-featurel
+  533  git push -u origin local-featurel
+  534  git switch main
+  535  git status
+  536  ls
+  537  ls
+  538  git log --oneline
+  539  git status
+  540  git fetch
+  541  git status
+  542  git log --oneline
+  543  git pull
+  544  ls
+  545  git status
+  546  git log --oneline
+  547  ls
+  548  git status
+  549  git pull
+  550  ls
+  551  git status
+  552  clear
+  553  cd ..
+  554  clear
+  555  ls
+  556  mkdir testrepo2
+  557  cd testrepo
+  558  cd testrepo2/
+  559  clear
+  560  git init
+  561  echo "rec1" >> file1.txt
+  562  git add .
+  563  git commit -m "created file1.txt"
+  564  git branch
+  565  clear
+  566  ls
+  567  git remote -v
+  568  git remote -v
+  569  git remote add origin https://github.com/Edu-DCP-Sep21-2024/testrepo2.git
+  570  git remote -v
+  571  git status
+  572  git remote remove origin
+  573  git remote -v
+  574  git remote add origin https://github.com/Edu-DCP-Sep21-2024/testrepo2.git
+  575  git branch -M main
+  576  git branch -M master
+  577  git remote -v
+  578  git push -u origin master
+  579  cd ..
+  580  mdkir testrepo3
+  581  mkdir testrepo3
+  582  cd testrepo3
+  583  git status
+  584  cd ..
+  585  cd testrepo2/
+  586  git remote -v
+  587  git remote add azrepo1 https://github.com/Edu-DCP-Sep21-2024/testrepo1.git
+  588  git remote -v
+  589  git remote remove azrepo1
+  590  cd ..
+  591  history
+	
+
+Next :
+
+	Build Orchestration Tool - Jenkins 
