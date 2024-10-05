@@ -1,0 +1,151 @@
+#######################
+Day 5 - 5th Oct. 2024
+#######################	
+
+
+	Build Orchestration Tool - Jenkins 
+	
+	Using DevOps Automation Process:
+						
+		Automate :::
+		
+			Build the Source Code 	
+			Create Artifacts 
+			Unit Testing 
+			Promote the Artifacts to Testing Environments
+			Send notification to testing Team
+			
+			
+	Build Orchestration Tool - Jenkins 
+		- Used to automate the application Builds and deployments 
+		- To Create CI/CD Pipeline Project to Automate the builds and deployments 
+		
+		
+	Jenkins Architecture :
+	
+		- Jenkins - Master / Slave Architecture 
+		
+			Jenkins Master Node (VM) 		--> Install Jenkins and Create Jenkins CICD Projects & Scheduled to run in Jenkins Slave_Node 
+			
+				Jenkins Slave_Node (VM)		--> To perform application Build
+				
+		How to create the Infra-Structure :
+		
+			AWS Cloud to Create Virtual Machines :
+				- Create a free-tier account 		-- 12 months 
+						https://aws.amazon.com/console/
+						
+						https://signin.aws.amazon.com/signup?request_type=register
+						
+							- Active Email_ID 
+							- Active Mobile Number
+							- Active Credit/Debit Card 
+							
+							
+				- Login to AWS Console : as a root user 
+						https://aws.amazon.com/console/
+						
+				- Choose EC2 Service	
+					
+				- Create EC2 Instance - Linux (Virtual Machines)
+				
+				
+					1 EC2 Instance ==> 750 Hrs/Month 
+					
+					10 EC2 Instances ==> 75 Hrs/Month
+				
+				- Connect to EC2 Instance - Linux - Ubuntu 	- v22.04
+				
+					SSH Connection :
+						
+						Host_Name 
+						User_Name 
+						Credentials :	
+							- Password 
+							- Access Token 
+							- SSH Keys 		# 
+					
+						- EC2 Instance Connect 		--> Default using Web Browser 
+						
+						- SSH Agent 					# Windows Machines 	
+							- MobaXterm 				https://mobaxterm.mobatek.net/download.html
+														https://mobaxterm.mobatek.net/download-home-edition.html 	
+															- Select Installer Edition 
+															- Download *.zip file 
+															- Extract all 
+															- Install 
+							- Putty 
+							
+						- Terminals 					# Mac / Linux Users 
+				
+					
+				- Login and Install all the required tools 
+			
+		
+	Jenkins Architecture :
+	
+		- Jenkins - Master / Slave Architecture 
+		
+			Jenkins Master Node (VM) 		--> Install Jenkins and Create Jenkins CICD Projects & Scheduled to run in Jenkins Slave_Node 
+			
+				Jenkins Slave_Node (VM)		--> To perform application Build
+				
+	Build Orchestration Tool - Jenkins 
+		- Used to automate the application Builds and deployments 
+		- To Create CI/CD Pipeline Project to Automate the builds and deployments 				
+	
+	Using DevOps Automation Process:
+						
+		Automate :::
+		
+			Build the Source Code 	
+			Create Artifacts 
+			Unit Testing 
+			Promote the Artifacts to Testing Environments
+			Send notification to testing Team		
+		
+		
+			Application Build :	Compile the code and create artifacts(binaries)
+				Build Tool - Maven 
+				
+			Unit Testing	: Junit / TestNG
+			
+	Working with Jenkins :::
+	
+	Developers' Perspective :
+		- Developers are just the Consumers 
+		
+	DevOps Perspective ::
+	
+		- DevOps Team are the Owner of Jenkins Architecture
+		
+	Roles and Responsibilities :::
+	
+		- Jenkins Administration 
+		- Installation of Jenkins 
+		- Jenkins Plugins Management 
+		- Tools Management 
+		- User Management 
+		- Security Management 
+		- Credential Management 
+		- Jenkins Master/Slave Nodes Configurations 
+		- Create CICD Pipeline Projects 
+		- Onboard the Applications to DevOps Workflow
+		- Periodic Upgrade of Jenkins and its plugins 
+		- Periodic Backup of Jenkins Components 
+		- Perform Backup and recovery 
+		
+		
+	- Installation of Jenkins :
+	
+		- https://www.jenkins.io/doc/book/installing/
+		
+		To Install any :
+			- Install the Pre-requisites
+			- Install the Actual Tool 
+			- Perform the post installation activities 
+			
+			
+		Jenkins-Master(VM)			==> Tools to be installed : git, jdk, jenkins
+										Purpose : Create CICD Pipeline Project and shedule to run in slave nodes
+										
