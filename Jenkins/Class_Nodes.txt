@@ -348,7 +348,7 @@ pipeline {
         stage('SCM_Checkout') {
             steps {
                 echo 'Perform SCM_Checkout'
-				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbapp.git'
             }
         }
         stage('Application_Build') {
