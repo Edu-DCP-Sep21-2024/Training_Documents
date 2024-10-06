@@ -149,3 +149,233 @@ Day 5 - 5th Oct. 2024
 		Jenkins-Master(VM)			==> Tools to be installed : git, jdk, jenkins
 										Purpose : Create CICD Pipeline Project and shedule to run in slave nodes
 										
+										
+#######################
+Day 6 - 6th Oct. 2024
+#######################	
+
+		- Global System Configuration
+		
+		- Jenkins Plugins Management 
+				- Extensions to Jenkins 
+				
+					Ant/Gradle/Maven - Build Tool 
+					
+					Docker - 
+					
+					Kubernetes -
+		
+			- Periodic Upgrade of Jenkins and its plugins
+		
+		- Tools Management 
+		
+		- User Management 
+		
+			- Used to provide access to users 
+			
+				- Active Directory 
+				- SSO Option 
+				- LDAP 
+						
+		- Security Management 
+		
+			- Allow or deny access to users 
+			- Define the level of access 
+			- User Authentication(Who) and Authorization(What) 
+				
+		- Credential Management 
+		
+		- Create Jenkins Jobs ::::
+		
+		Jenkins-Master(VM)			==> Tools to be installed : git, jdk, jenkins
+										Purpose : Create CICD Pipeline Project/job and shedule to run in agent
+										
+										
+		Jenkins_Master 				--> Create cicd pipeline project for java application & run on Jenkins_Master			
+
+			Jenkins Jobs/Projects :
+			
+				- Free-Style Project 		==> Completely Manual Configurations
+				
+				- Pipeline Projects 		==> Scripted using groovy - used to onboard the applications
+		
+		- Free-Style Project 		==> Completely Manual Configurations
+		
+			--> Handle Variables in Jenkins :::
+			
+				- Environment Variables		# System Variables/Keywords 
+				
+					echo "Hello"
+					
+					echo $var1
+					
+					"${var1}"	
+				
+					eg.: echo "jenkins-${JOB_NAME}-${BUILD_NUMBER}"
+				
+				
+				- User-Defined Variables
+				
+					a = 5;
+		
+		- Error Handling in Jenkins Projects :::
+
+
+		- Pipeline Projects 		==> Scripted using groovy - used to onboard the applications
+		
+			- Scripted Pipeline Projects 
+
+node {
+    def mvnHome
+    stage('Preparation') { // for display purposes
+        // Get some code from a GitHub repository
+        git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+        // Get the Maven tool.
+        // ** NOTE: This 'M3' Maven tool must be configured
+        // **       in the global configuration.
+        mvnHome = tool 'M3'
+    }
+
+	
+			- Declarative Pipeline Projects 
+				
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+            }
+        }
+        stage('Deploy to QA Environment') {
+            steps {
+                echo 'Deploy to QA'
+            }
+        }
+    }
+}		
+		
+		Pipelines are composed of various stages :::
+		
+			Task : Application Build and Deployment :
+			
+			
+		1. SCM_Checkout 
+		2. Build - compile & create artifact 
+		3. Unit Testing 
+		4. Promote the Artifacts to Test Environment 
+		5. Send Email Notification 
+
+		Automate :::
+		
+			Build the Source Code 	
+			Create Artifacts 
+			Unit Testing 
+			Promote the Artifacts to Testing Environments
+			Send notification to testing Team		
+		
+		
+		
+			
+	- Jenkins Master/Slave Nodes Configurations 
+
+		Jenkins_Master	(VM)			--> jdk,jenkins ==> Create CICD Pipeline Project/job and shedule to run in agents
+		
+			Jenkins_Slave1	(VM)		--> Java Build --> jdk, maven ==> build java application and create artifacts
+			Jenkins_Slave1.1(VM)		--> Java Build --> jdk, maven ==> build java application and create artifacts
+			Jenkins_Slave2	(VM)		--> .Net Build --> .Net sdk ==> build .net application and create artifacts			
+			Jenkins_Slave3				--> Python Applications
+			Jenkins_Slave4				--> Angular Applications
+			Jenkins_Slave5				--> NodeJS Applications
+			
+		Jenkins_Master (VM)			--> jdk,jenkins ==> Create CICD Pipeline Project/job and shedule to run in agents		
+			Jenkins_Slave (VM)		--> git, jdk, maven ==> build java application and create artifacts
+
+
+		SSH Connection: 
+		
+			Key based Authentication
+			
+				- Host Name 
+				- User Name 
+				- Create SSH Key Pairs 
+
+	Environments:
+		
+	Non-Prod 																				Prod 
+		
+		Dev Environment
+		
+		Build Environment
+		
+		Test Environments
+			- QA 
+			
+			- UAT 					=====================>											Production Servers 
+
+
+	Maven is a build tool used to build java based applications
+	
+		- pom.xml 		# used to define the application build properties 
+						# used to define the dependencies and plugins to perform the build
+						# pom.xml will be created and maintained in the source code repository by the developer 
+						# Project Object Model
+		- maven goal 
+						# define the task :
+						 
+						mvn compile 	# Compile the source code 
+						
+						mvn test 		# Compile and perform unit testing 
+						
+						mvn package 	# Compile, test and create artifacts in the target folder						
+						
+						mvn clean package # Clean-up the target folder and compile,test,create artifacts						
+						
+		
+	
+	- Create CICD Pipeline Projects 
+		
+pipeline {
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+				
+            }
+        }
+        stage('Deploy to QA Environment') {
+            steps {
+                echo 'Deploy to QA'
+            }
+        }
+    }
+}		
+		
+
+
+
+Next ::
+			- Setup the Testing Server :
+			
+				Web Application Server - Tomcat / Nginx / httpd
+		
+		- Onboard the Applications to DevOps Workflow
+		
+	
+		
+	
