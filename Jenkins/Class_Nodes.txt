@@ -377,5 +377,227 @@ Next ::
 		- Onboard the Applications to DevOps Workflow
 		
 	
+										
+#######################
+Day 7 - 19th Oct. 2024
+#######################		
+
+	- Setup Tomcat Server 
+	
+	- Integrate Tomcat Server to Jenkins 
+	
+	- Setup Build Triggers 
+	
+	- Setup EMail Notification 
+	
+
+	Environments :::
+	
+		Non-Prod Environments																Production Environments
+		
+			Dev Environment
+			
+			Build Environment
+			
+			Test Environment
+			
+				QA 
+				
+				UAT 						==============>		Staging_Env		=====>				Production Servers1,2,3,4,5,6
+
+
+	Web Application Server - Tomcat / Nginx / httpd
+	
+	
+	Jenkins_Master 
+		Jenkin_Slave 			# *.war
+		
+	Tomcat_Server 
+	
+	Deployment ???? -> Process of copying the artifacts from one server to another server
+	
+	
+	Source_Server 																Target_Server 
+	
+	
+		Jenkins_Slave_Node															Tomcat_Server 
+		
+			target/*.war																/opt/tomcat/webapps/*.war
+			
+	
+	Publish-Over SSH Plugins :
+	
+		- Install Publish-Over SSH Plugins
+	
+		- Integrate any remote server to Jenkins Master 
+		
+		
+pipeline {
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+				
+            }
+        }
+        stage('Deploy to QA Environment') {
+            steps {
+                script{
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'Edu-Tomcat-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }
+            }
+        }
+    }
+}
+
+
+Build Triggers :::
+
+	- Used to automate / schedule the Jenkins Jobs for execution.
+	
+	
+	Types of Build Triggers :
+	
+	- Build Periodic
+	
+	
+	- PollSCM 
+	
+	
+	- GITHub Webhook 
+	
+	Build Triggers :::
+	
+		It used to Automate the Job Exection.
+		
+		-> Build Periodic					# https://crontab.guru/
+		
+			- Used to trigger the jenkins jobs irrespective of code change. - It is not meant for CI/CD.
+			- The build is sheduled based on the crontab 
+			
+			Non-Prod Environments 										Prod Environment
+			 Shd be available only during business hrs 
+				DEV Servers 
+				BUILD
+				QA/UAT 														Prod Servers 
+				
+				
+				8AM - 10PM 
+		
+		
+		-> Github Webhook 
+		
+			- Used to trigger the jenkins Job whenever there is any commit happened in the remote repository
+			- github webhook has be configured in the remote repository by using the jenkins URL
+		
+		
+		-> Poll-SCM 
+		
+			- It is used to trigger the build based on the crontab only if there is any changes happened in the source-code repository.
+			
+			Eg.: 
+			
+				Test Cycles :::
+				
+				
+				8AM - 12PM - 3PM 
+	
+
+Email_Notifications :
+
+	Jenkins Supports Email Notifications :
+	
+How to setup the Email Server in the Jenkins Config:
+
+goto manage jenkins -> system configuration 
+
+goto Email Notification 
+		
+SMTP Server :
+smtp.gmail.com
+
+SMTP Authentication
+
+SMTP Port :: 465
+
+Login to Gmail :::
+
+Click Manage Account Settings
+
+@Left side panel - select Security 
+
+MFA --> mobile#
+
+App Password = 16 bytes of App Password. vaur v zr
+
+What ? window
+Which Appln - email				
+
+
+		Stage{}
+		post{
+			success 
+			failure 
+			unstable 
+		}
+		
+pipeline {
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git'
+            }
+             post {
+                failure {
+                  sh "echo 'Send mail on failure'"
+					mail bcc: 'l@gmail.com', body: 'Jenkins Jobs Status ', cc: 'l@gmail.com', from: '', replyTo: '', subject: 'SCM-Checkout Failed ', to: 'l@gmail.com'
+                }
+              }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'				
+            }
+             post {
+                failure {
+                  sh "echo 'Send mail on failure'"
+					mail bcc: 'l@gmail.com', body: "Jenkins Jobs Status ${BUILD_URL}", cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Build Failed ', to: 'l@gmail.com'
+                }
+              }
+        }
+        stage('Deploy to QA Environment') {
+            steps {
+                script{
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'Edu-Tomcat-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }
+             post {
+                failure {
+                  sh "echo 'Send mail on failure'"
+					mail bcc: 'l@gmail.com', body: "Jenkins Jobs Status ${BUILD_URL}", cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Deploy to QA Failed ', to: 'l@gmail.com'
+                }
+                success {
+                  sh "echo 'Send mail on Successful'"
+					mail bcc: 'l@gmail.com', body: "Jenkins Jobs Status ${BUILD_URL}", cc: 'l@gmail.com', from: '', replyTo: '', subject: 'Deploy to QA Successful ', to: 'l@gmail.com'
+                }
+              }
+            }
+        }
+    }
+}
+
+
 		
 	
