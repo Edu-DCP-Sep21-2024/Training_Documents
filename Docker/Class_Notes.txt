@@ -262,4 +262,97 @@ Day 8 - 20th Oct. 2024
 		
 	
 	
-	
+   13  apt install docker.io -y
+   14  docker --version
+   15  clear
+   16  docker images
+   17  docker ps
+   18  docker ps -a
+   19  clear
+   20  docker images
+   21  docker ps -a
+   22  docker pull centos
+   23  docker images
+   24  clear
+   25  docker images
+   26  docker ps -a
+   27  docker run centos
+   28  docker ps
+   29  docker ps -a
+   30  docker ps
+   31  docker run centos sleep 20
+   32  docker run centos sleep 5
+   33  docker run -d centos sleep 20
+   34  docker ps
+   35  docker run -d centos sleep 20
+   36  docker ps
+   37  celar
+   38  clear
+   39  docker run -it centos bash
+   40  docker images
+   41  clear
+   42  docker images
+   43  docker run -it ubuntu bash
+   44  docker ps
+   45  clear
+   46  docker images
+   47  docker run -it ubuntu bash
+   48  docker ps -a
+   49  docker start 494da06d729c
+   50  docker ps
+   51  docker exec -it 494da06d729c bash
+   52  docker ps
+   53  docker stop 494da06d729c
+   54  clear
+   55  docker images
+   56  docker ps -a
+   57  docker rm 0f12ce68d857 d06d1dfe4194
+   58  docker ps -a
+   59  docker rmi centos
+   60  docker rm aa1d3e5a0866 f245457afdc9 ee8ee8d14ff6 82c258bfbe40 49e4f226e23e
+   61  docker rmi centos
+   62  docker images
+   63  docker ps -a
+   64  docker start 494da06d729c
+   65  docker ps
+   66  docker exec -it 494da06d729c bash
+   67  docker stop 494da06d729c
+   68  clear
+   69  docker images
+   70  docker ps -a
+   71  clear
+   72  docker run -it tomcat:8.0 bash
+   73  docker ps -a
+   74  docker run -d tomcat:8.0
+   75  docker ps -a
+   76  clear
+   77  docker ps -a
+   78  clear
+   79  docker ps -a
+   80  docker run -it -p 8089:8080 tomcat:8.0
+   81  clear
+   82  docker images
+   83  docker ps -a
+   84  clear
+   85  docker volume list
+   86  docker volume create edu-sep21-vol1
+   87  docker volume list
+   88  docker volume inspect edu-sep21-vol1
+   89  cd /var/lib/docker/volumes/
+   90  cd edu-sep21-vol1/
+   91  cd _data/
+   92  pwd
+   93  clear
+   94  pwd
+   95  docker run -it ubuntu bash
+   96  docker run -it --mount source=edu-sep21-vol1,destination=/edu-sep21-vol1 ubuntu bash
+   97  ls
+   98  echo "rec1" >> infile.txt
+   99  ls
+  100  docker run -it --mount source=edu-sep21-vol1,destination=/edu-sep21-vol1 ubuntu bash
+  101  docker run -it --mount source=edu-sep21-vol1,destination=/sample-vol1 ubuntu bash
+  102  cd ~
+  103  history
+
+
+
