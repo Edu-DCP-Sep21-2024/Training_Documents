@@ -1,0 +1,265 @@
+#######################
+Day 8 - 20th Oct. 2024
+#######################	
+
+	Containerization using Docker 
+
+
+	Containerization :
+	
+		- It is a process of packaging the application along with its dependencies
+		- All Micro-Service based applications should be Containerised
+		
+	Virtual Machine :
+	
+		- VMs are Hardware level Virtualization 
+		- VMs are created by using the Hypervisor 
+		- VMs are used to run the Operating System 
+		- Even if there is no active applications, VMs will be up and running 
+		- VMs Consume more space and time to start-up the VMs 
+		
+		
+	Containers :
+	
+		- Containers are OS level Virtualization
+		- Containers are created by using the Container Engine  
+		- Containers are used to run the applications/Task. NOT Operating System 
+		- If there is no active applications/Task, Containers will immedeiatly goes to EXIT State and free-up the resource 
+		- Containers Consume less space and time to start-up the Containers 
+		
+		- Containers are basically used to reduce the no. of VMs 
+		
+		- Containers uses the -> Namespace and Control Groups 	# Used to create a dedicated address space to any process 
+		
+		
+	Use-Cases :
+	
+		Operating System :
+		
+			- Run some process/task/applications 
+			
+			- Core of OS --> Kernel 
+			
+				-> Namespace and Control Groups 	# Used to create a dedicated address space to any process 
+				
+				
+		Infra-Structure Perspective :
+		
+			Jenkins_Master(VM) :
+				Jenkins_Slave1(VM)	- Java App Build 
+				Jenkins_Slave2(VM)	- Python App Build 
+				Jenkins_Slave3(VM)	- Angular App Build 
+				Jenkins_Slave4(VM)	- NodeJS App Build 
+				Jenkins_Slave5(VM)	- .Net App Build 
+				
+			Jenkins-Master(VM) 
+				Jenkins_Slave(VM) 
+					Install Container Engine 
+						C1 - Java App Build 	--> Image -> ubuntu_base_image -> git,jdk,maven
+						C2 - Python App Build 
+						C3 - Angular App Build 
+						C4 - NodeJS App Build 
+						C5 - .Net App Build 
+				
+		
+		Developers' / DevOps Perspective :
+		
+		
+			Developer :
+			
+				Application Src Code :
+				
+				Build 		==> Application Artifacts - mywebapp.war
+				
+					To to run mywebapp.war 
+						- jdk17 & tomcat8
+						
+					Package the application : (mywebapp.war, jdk17 & tomcat8) --> mywebapp_img1
+				
+					Deploy the Application image to the target environment 
+				
+				Deploy to QA Environment :
+				
+					Copied the mywebapp.war to QA Server 
+					
+				
+				QA_Server - - jdk11 & tomcat10 - mywebapp.war
+				
+					--> mywebapp_img1 --> Run this image an application Container					
+					
+				UAT --> mywebapp_img1 --> Run this image an application Container
+				
+				PROD --> mywebapp_img1 --> Run this image an application Container
+				
+				
+
+	Working with Containers :
+	
+		Terminologies :
+		
+		- Container Engine 	# Used to Create Container Images and Run the Containers 
+							# Docker Container Engine 
+		
+		- Container Image 	# Is a static file that defines the properties and the dependencies of Containers
+							# Non-Executable
+							# Images are composed of various layers 
+							# These layers are created using the Instruction 
+		
+		- Container 		# Executable units of Container images. 
+		
+		- Container Registry # Used to manage/version control the Container Images 
+							 # DockerHub -> https://hub.docker.com/
+		
+		- Container Repositories	# Subset of Container Registry
+		
+		
+		
+		AWS : ECS/ECR 
+		Azure : ACS/ACR 
+		GCP : GCE/GCR 
+		
+		Installation of Container Engine :		# https://docs.docker.com/engine/install/
+			apt install docker.io -y
+
+		docker cli Commands :	
+		
+		
+			docker --version 
+
+			docker images 	# get the list of images 
+			
+			docker ps 		# get the list of active containers 
+			
+			docker ps -a 	# get the list of all containers 
+		
+		
+		docker pull <Image_Name>	# To download the docker container image from dockerhub registry to local machine 
+		
+			docker pull centos:latest
+			docker pull ubuntu:v1.0
+			
+
+	docker pull <Image_Name> 				# TO Download the latest version of Container Image 
+	
+	docker pull <Image_Name>:<tag>			# TO Download the specific version of Container Image 
+	
+	
+	docker run <Image_Name>					# To Create and run the Container 
+	
+	Container Execution Modes ::
+	
+		- Foreground / Attached Mode 		# Default Mode 
+		
+				docker run <image_name> 
+				
+				Eg.: 
+				
+					docker run centos sleep 20 
+		
+		- Background / Detached Mode 
+			
+				docker run -d <image_name> 
+				Eg.: 
+				
+					docker run -d centos sleep 20 	
+		
+		- Interactive Mode 
+		
+				docker run -d <image_name> 
+				Eg.: 
+				
+					docker run -it centos bash 			
+
+	
+	docker start <container_id>						# To Start the Container 
+	
+	docker stop <container_id>						# To Stop the container 
+	
+	docker exec -it <container_id> bash 			# To Login to the running Container 
+	
+	docker rm <container_id>						# To remove/delete the Container 
+	
+	docker rmi <image_name>							# To remove/delete the Image from local machine
+	
+	
+	Port Mapping / Port Binding ::::
+	
+		- It is used to expose the container to access thru internet 
+		
+		- It is a process of mapping the container port with the host port.
+	
+	Run Application inside the Container!
+	
+		docker run -it tomcat:8.0 bash
+		
+		docker run -it -p <host_Port>:<container_Port> tomcat:8.0
+		
+		Eg:
+		
+		docker run -it -p 8089:8080 tomcat:8.0
+	
+		-p <host_Port>:<container_Port>
+	
+	
+	QA_Server :::
+	
+		Installed Tomcat ::
+		
+		8080 --> Execute only one application 
+		
+		service1 -- 8080
+		
+		service2 -- 8089
+		
+
+	Docker Volumes ::::
+	
+	
+		Container :::
+		
+			- Runs in an isolated address space.
+			
+		Monolith
+		Micro-Service
+		3-tier Applications
+			
+			
+		Container
+			
+			Stateless Applications
+				- Application that will not have any state of execution
+				- Applications that will not create any output/need any input.
+		
+			Stateful Applications ::
+				- Application that will have state of execution
+				- Applications that requires some input and generate some output
+			
+			
+			
+		User_Login/SignIn Services :::
+		
+		3 - Tier Application Layers :::
+		
+			Front-End - User Interface 
+			
+			Application Layer - Business Logic 
+			
+			Back-End Layer - DataBase 
+			
+		
+		
+		docker volume :::
+			
+			- Is used to create permanent Volumes that can be attached to any container to maintain the persistant data accross the Applications running thru containers. 
+		
+		docker volume create <vol_name>
+		
+		docker volume inspect <vol_name>
+		
+		docker run -it centos bash 
+		
+		docker run -it --mount source=edu-sep21-vol1,destination=/edu-sep21-vol1 ubuntu bash
+		
+	
+	
+	
