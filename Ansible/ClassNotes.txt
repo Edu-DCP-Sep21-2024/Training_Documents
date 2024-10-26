@@ -1,0 +1,97 @@
+#######################
+Day 7 - 19th Oct. 2024
+#######################	
+
+Configuration Management using Ansible :::
+
+	- IAC Tools 
+	
+		- Infra-Structure As Code 
+		
+			Infra-Structure Management Team :::
+			
+				IAC - Infra-Structure As Code 
+				
+				Provision/Create the Resources 		--> Terraform/CF/ARM
+				
+				Configure the Resources 			--> Ansible/Chef/Puppet 
+			
+		Ansible :
+		
+		1. Why we need Ansible ?
+		
+		2. Ansible Architecture
+		
+		3. Ansible Architecture Components
+		
+				- Ansible Controller 
+				- Ansible Nodes 
+				- Inventory File 
+				- Ansible Modules 
+				- ansible.cfg 			# Define the default ansible properties 
+				
+		
+		4. Ansible Concepts and Terminologies 
+		
+			--> Ansible Adhoc Commands 
+					-> Used to run a specific Module in the ansible nodes 
+							
+							apt install git 
+					
+					
+			--> Ansible Playbooks 	
+			
+					-> Is a script file written using *.yaml
+					-> Used to run series of Modules in the ansible nodes 
+					
+							apt install git 
+							apt install jdk
+							apt install maven 
+		
+		
+		
+#######################
+Day 8 - 20th Oct. 2024
+#######################	
+		
+		Ansible Architecture Components
+		
+				- Ansible Controller 		# Install Ansible 
+				- Ansible Nodes 			# Connect to Ansible Controller 
+				- Inventory File 			# Maintain the details of the Ansible Nodes 
+				- Ansible Modules 			# Set of Instructions/Functions to be executed in the AnsibleNodes from Ansible Controller.
+				- ansible.cfg 				# Define the default ansible properties 
+				
+				
+		Install Ansible :::
+		
+			--> Ansible Playbook and Inventory File 
+			
+			
+		Create Inventory File 
+		
+			
+		Using Adhoc Command we can execute any module in target nodes 
+		
+		
+		
+		
+		Jenkins_SlaveNode :::	 Purpose :
+		
+			Tools to be install 
+			
+			mvn/jdk/git 
+			
+			create workspace --> target/*.war 
+			
+			
+			
+	Always Ansible Playbooks should be reusable!
+	
+		Variables!
+		
+			Environment Variables		== Setup Modules - Ansible_Facts 
+			
+			User-Defined Variables 
+				
+				
