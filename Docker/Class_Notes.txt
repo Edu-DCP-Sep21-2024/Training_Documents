@@ -355,4 +355,219 @@ Day 8 - 20th Oct. 2024
   103  history
 
 
+	
+#######################
+Day 10 - 27th Oct. 2024
+#######################	
 
+	Create Docker Images :
+	
+
+		docker commit ::
+		
+			- To Create a New Container Image based on the properties of existing Container.
+			
+			Syntax :
+
+				docker commit <existing_container_id> <dockerhub_repo_name>/New_Image_Name>:<tag_Name>
+
+			Eg.: 
+				docker commit 3aafbd82cd78 loksaieta/edu-sep21-mvnbuildenv
+		
+		
+		
+		docker build ::
+		
+			- To create a new Container Image based on the Dockerfile reference.
+			- Dockerfile composed of Instructions to Create Docker Container Images
+			- Application Developers create the Dockerfile and update in the Source Code Repository. 
+			
+			
+			vi Dockerfile 
+			
+			FROM ubuntu
+			RUN apt update -y
+			RUN apt install git -y
+			RUN apt install maven -y 
+			
+			FROM centos
+			RUN yum update -y
+			RUN yum install git -y
+			RUN yum install maven -y 
+			
+			Syntax :
+			
+			docker build -t <dockerhub_repo_name>/New_Image_Name>:<tag_Name> .		# '.' refers to the Dockerfile path
+			
+			Eg.:
+			
+			docker build -t loksaieta/edusep21mvnbuildenv:v1.0 .	# '.' refers to the Dockerfile path
+				
+		
+		vi Dockerfile 
+		
+		FROM ubuntu 
+		RUN apt update -y 
+		RUN apt install git -y 
+		RUN apt install maven -y 
+		
+			Syntax :
+			
+			docker build -t <dockerhub_repo_name>/New_Image_Name>:<tag_Name> .		# '.' refers to the Dockerfile path
+			
+			Eg.:
+			
+			docker build -t loksaieta/sa-javamvnimg .		# '.' refers to the Dockerfile path
+			
+		Write Dockerfile :::
+		
+			Docker File Instructions :::
+			
+			FROM 									# To Identify the Base Image
+			RUN 									# To run the package manager
+			COPY 									# To Copy the file from host volume to container volume
+			CP 										# To Copy the file within the container volumes 
+			ADD 									# To Copy the file from Host Volume as well as from URL
+			ENV 									# To define the Environment Variable 
+			ARG 									# To pass Arguements to the Steps in Dockerfile 
+			EXPOSE									# To Define the Container Port 
+			WORKDIR									# To set the current working directory within the Container 
+			CMD										# To set the default start-up command to the container 
+													  This Command can be changed at run-time.
+			ENTRYPOINT								# To set the default start-up command to the container 
+													  This Command cannot be changed at run-time.
+													  		
+			Dockerfile :::
+			
+			FROM tomcat:8.0
+			COPY ./target/*.war /usr/local/tomcat/webapps
+			EXPOSE 8085	
+			
+			docker build -t loksaieta/webappimg:v1.0 .			# run this command from the Dockerfile location.
+
+			docker run -it -p 8089:8080 loksaieta/webappimg:v1.0
+			
+			
+	Push the Images to Container Registry ::::
+	
+	
+	Access Docker Registry using Token Based Authentication :
+	
+		- Create Access Token in DockerHub 
+		
+			docker login -u loksaieta
+			
+			zdfasdfasdfasdfasdf8
+			
+			
+		docker push <image_name>:<tag>
+		
+		docker push loksaieta/edusep21mvnbuildenv:v1.0
+	
+
+	Container Orchestration ::::
+	
+		Overview of ;
+			Docker Compose
+			Docker Swarm 
+			
+		Docker Compose
+			- Is an extension/Plugin to Docker Engine.
+			- Is used to run multiple containers as a Service!
+			- Docker Compose uses the Yaml file to create the Service definitions
+			
+		User_SignIn_Service:
+			C1.0 
+            C2.0            
+            C3.0
+				
+			
+			Any Container that is part of a Service :
+		
+				should be in-sync with other container within the service 
+				
+				
+				Start/Stop all these container at the same time.
+		
+				
+		Ensure High Availability of Containers :
+		
+		
+		User_SignIn_Service:
+			C1.0 				
+            C2.0            
+            C3.0	
+
+
+	Docker Swarm ::::
+
+	Container Orchestration Tool ::::
+	
+		- Docker Swarm is one the Container Orchestration Tools.
+		- It is meant only for Docker Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		- We cannot Do Auto-Scaling or Load Balancing!
+
+
+
+	3-Tier Application Service :
+	
+		User_SignIn Service :
+	
+			Front-End			-->		C1.0,C1.1,C1.2,C1.3,C1.4 
+			
+			Application_Layer 	-->		C2.0,C2.1,C2.2,C2.3,C2.4
+			
+			Database Layer 		-->		C3.0,C3.1,C3.2,C3.3,C3.4
+		
+			C1.0 				
+            C2.0            
+            C3.0			
+		
+		
+		Replicas of Containers 
+		
+			C1.0,C1.1,C1.2
+		    C2.0,C2.1,C2.2
+		    C3.0,C3.1,C3.2
+			
+			
+		Production Environment
+		
+		Production Servers 
+		
+		
+		*.war
+		
+			s1,2,3,4,5
+		
+  104  history
+  105  clear
+  106  docker ps
+  107  docker stop 14a6e5a21349
+  108  clear
+  109  docker ps -a
+  110  clera
+  111  clear
+  112  docker ps -a
+  113  clear
+  114  docker ps -a
+  115  docker run -d -p 8089:8080 tomcat:8.0
+  116  docker run -it -p 8089:8080 tomcat:8.0
+  117  docker run -d -p 8088:8080 tomcat:8.0
+  118  docker run -d -p 8087:8080 tomcat:8.0
+  119  docker ps
+  120  clear
+  121  docker ps
+  122  clear
+  123  docker ps
+  124  docker ps -a
+  125  clear
+  126  docker ps -a
+  127  clear
+  128  docker ps
+  129  clear
+  130  docker ps
+  131  clear
+  132  history
+	
