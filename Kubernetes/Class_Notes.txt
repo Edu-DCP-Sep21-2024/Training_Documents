@@ -1,0 +1,194 @@
+#######################
+Day 10 - 27th Oct. 2024
+#######################			
+		
+	Kubernetes ::::
+	
+		- It is a Open-Source Container Orchestration Tool 
+		- Kubernetes is used to Deploy any type of Containers.
+		- It is used to ensure high availability of the Applications/services running thru Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		- It supports Auto-Scaling & Load Balancing.
+		
+	Managed Services ::
+
+		AWS 	- ECS/ECR/EKS 
+		Azure 	- ACS/ACR/AKS 
+		GCP     - GCE/GCR/GKE
+			
+	GOOGLE !	
+		
+	Kubernetes Architecture  ::::
+	
+	
+		Kubernetes_Master :
+		
+			Kubernetes_WorkNode1
+			Kubernetes_WorkNode2
+			Kubernetes_WorkNode3
+			
+	Kubernetes Architecture Components :
+	
+		Kubernetes Components ::::
+
+			API_Server 				--> # Acts as an interface to the kubernetes 
+			
+			ETCD 					--> # Single point of Source for Kubernetes Components 
+			
+			Scheduler				--> # To identify the Healthy Node for Deployments
+			
+			Controller Manager 		--> # To run the pods in its desired state 
+			
+			
+			Kubelet 				--> # Is a Kubernetes Agent used to Create & Deploy the Pods
+			
+			KubeProxy				--> # Is used to enable pod networking by create Pod IP Address			
+			
+			CRI - Container RunTime Interface (Container-D)
+									--> # It is used identify the Image from Container Registry for deployment
+				
+				
+		
+	
+		Kubernetes Concepts / Terminologies ::::
+		
+		
+			Kubernetes_Master			# Used to Create and Schedule the Deployments to Kubernetes_WorkNodes
+			
+			Kubernetes_WorkNodes		# Target Servers 
+
+			Kubectl 					# Is Command Line Utility, used to interact with Kubernetes Master 
+			
+			Container Images 
+				--	Is a Static file that defined the properties of the Container and its dependencies 
+				--  Container Images are Non-Executables
+				--  Container Images are composed of various Layers created using the Dockerfile Instructions
+				
+			Containers 
+				--	Containers are the executable units of Container Images
+				-- 	Containers are used to run the applications defined in the Container Images 		
+			
+			Container Registry 
+				--	It is used to save and version control the Container Images 
+					Dockerhub is Container Registry to be used.
+					https://hub.docker.com/			
+			
+			Container Repositories
+				--	Container Repositories	are the subset of Container Registry
+			
+			
+			Pod							# Is Atomic Unit of Schedule - Any Small Task you run in Kubernetes is executed as Pod.
+										# Used to Run the Container(s)
+										# As a best practise, it is recommended to have One Container in a Pod.
+			
+			Kubelet 					# Is a Kubernetes Agent used to Create & Deploy the Pods
+			
+			CRI 						# Container Run-Time Interface - "Container-D"
+										# It is used identify the Image from Container Registry for deployment
+			
+		
+			Manifest File				# Is a AppConfig file, that defines the properties of the pods to be deployed in kubernetes
+										# It is written using *.yaml/*.json format by the developers and maintained in the Source Code Repositories during CICD Pipeline Automation Process 
+		
+		
+			Cluster 					# Is collection of WorkerNodes - Is a logical grouping of worker nodes.
+
+
+
+			Kubernetes Developer & Administrators 
+
+
+		Kubernetes_Master (VM):
+		
+			Kubernetes_Cluser				# region1
+				Kubernetes_WorkNode1(VM)
+				Kubernetes_WorkNode2(VM)
+				Kubernetes_WorkNode3(VM)
+		
+		
+		Kubernetes_Master :
+		
+			Kubernetes_Cluser1				# region1  -- azs			AWS
+				Kubernetes_WorkNode1
+				Kubernetes_WorkNode2
+				Kubernetes_WorkNode3		
+		
+			Kubernetes_Cluser2				# region2
+				Kubernetes_WorkNode1
+				Kubernetes_WorkNode2
+				Kubernetes_WorkNode3			
+		
+	
+			Kubernetes_Cluser3				# region3
+				Kubernetes_WorkNode1
+				Kubernetes_WorkNode2
+				Kubernetes_WorkNode3		
+
+
+		
+		Kubernetes_Master : On-Prem
+		
+			Kubernetes_Master1 :										GCP 
+				Kubernetes_Cluser1				# region1 
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+			
+				Kubernetes_Cluser2				# region2
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3			
+		
+				Kubernetes_Cluser3				# region3
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+		
+			Kubernetes_Master2 :										AWS 
+			
+				Kubernetes_Cluser1				# region1 
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+			
+				Kubernetes_Cluser2				# region2
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3	
+		
+				Kubernetes_Cluser3				# region3
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+	
+			Kubernetes_Master3 :										On-Prem
+			
+				Kubernetes_Cluser1				# region1 
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+			
+				Kubernetes_Cluser2				# region2
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3			
+		
+				Kubernetes_Cluser3				# region3
+					Kubernetes_WorkNode1
+					Kubernetes_WorkNode2
+					Kubernetes_WorkNode3		
+		
+
+	
+Next :		
+		
+	Installation of Kubernetes Master/Worknodes :::	
+	
+	Working with Kubernetes
+
+
+	
+		
+	
+	
+	
