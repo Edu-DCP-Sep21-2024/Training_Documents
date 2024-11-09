@@ -187,7 +187,168 @@ Next :
 	Working with Kubernetes
 
 
+#######################
+Day 11 - 9th Nov. 2024
+#######################		
+		
+	Installation of Kubernetes Master/Worknodes :::	
 	
+	Working with Kubernetes
+	
+	Concepts:
+		- Kubectl 
+		- Pods 
+		- Controller Objects:
+			- Replication Controller
+			- Replicaset
+			- Daemonset
+			- Deployment 
+		- Kubernetes Services 
+			- NodePort Service
+			- ClusterIP Service 
+			- Load Balancer
+		- Kubernetes Volumes 
+			- ConfigMaps 
+			- Secrets
+			- HostPath Volume
+			- Persistant Volumes 
+			- Persistant Volume Claim
+		- HELM Charts 
+	
+	Demo : Use Cases using Jenkins/Docker/Kubernetes 
+		
+	
+	Installation of Kubernetes Master/Worknodes :::				
+	
+	
+	Kubernetes_Master (VM):
+	
+		Kubernetes_WorkNode1(VM)
+		Kubernetes_WorkNode2(VM)
+		
+	Working with Kubernetes :::
+	
+		- Create Manifest File 
+			- Using *.yaml / *.json 
+
+	
+		- Controller Objects:
+			- Replication Controller
+			- Replicaset
+			- Daemonset
+			- Deployment 			
+		
+			- Replication Controller & Replicaset			
+
+				- Used to create replicas of pods 
+				- Used to run the specific no. of pod instances to ensure high availability.
+				
+				Replication Controller :
+					- Uses the equality based operator to deploy the service 
+					- Outdated one.
+					
+					envi = qa
+					
+				Replicaset :
+					- Uses the Set Based Operator to deploy the service 
+					- Replicaset are enhancement of Replication Controller
+					- It can be automatically create during Deployment Controller Object Definitions.
+					
+					envi : {qa,uat}
+	
+		
+				Labels and Selectors :
+				
+				
+				
+				Scaling :
+				
+					Scale-Up 	--> 100 Relicas of pods - 1000 users --> 10000 Users 
+					Scale-Down 
+					
+	Deployment Controller Object :::
+	
+		--> It is used to deploy the pods and ensure high availability of pods by creating pod replicas 
+			It is self healing!
+		--> 1. Create Muliple instance/replicas/copies of pods 
+			2. Used to Scale-Up / Scale-Down the Pods 
+			3. Used to Upgrade the application pods 
+			4. Used to Down-grade/roll-back the application pods
+		--> The upgrade/down-grade of application pods can be done without any downtime. 
+		--> To achieve zero-downtime during upgrade/down-grade, By Default, it used Rolling-Update Deployment Strategy.	
+			
+
+		- Upgrade the application pods 
+		- Down-grade/roll-back the application pods
+		
+		
+		- Create 
+			Deployment Object 
+			Replicaset 
+			Pod Instances 
+		
+		
+		Deployment Strategies :
+		
+			- Rolling-Update Strategy 		# Is the Default Deployment Strategy.
+			
+	
+		PROD_Server : 		Production Deployment Window 4 - 6hrs 
+			Prod_Server1,2,3,4,5
+		
+			*.war_v1.0 	
+			
+			*.war_v2.0 
+			
+		
+		WNode1,2,3
+		
+		Pod_Replicas:
+		
+		pod1.0		==> pod2.0
+		pod1.0		==> pod2.0		
+		pod1.0		==> pod2.0
+			
+			
+			
+		Server --> CPU-2,4GB RAM
+		
+			--> Vertical Scaling Means --> Increase CPU/RAM
+
+			--> Horizontal Scaling Means --> Add More no. of servers to the infra.
+			
+		
+
+		
+		Service - payment-svc --> payment-deploy -> payment-app:v1.0 -> payment-app.war_SNAPSHOT1.0 
+
+		Service - payment-svc --> payment-deploy -> payment-app:v2.0 -> payment-app.war_SNAPSHOT2.0
+
+
+	- Daemonset :
+	
+		-> Replicaset : Used to run the specific no. of pod instances to ensure high availability.
+		
+		-> Daemonset : Used to run a copy of pod in all/set the available nodes
+		
+			KMaster :
+				- KWN1
+				- KWN2
+
+	
+Next :
+		
+		- Kubernetes Services 
+			- NodePort Service
+			- ClusterIP Service 
+			- Load Balancer
+		- Kubernetes Volumes 
+			- ConfigMaps 
+			- Secrets
+			- HostPath Volume
+			- Persistant Volumes 
+			- Persistant Volume Claim
+		- HELM Charts 	
 		
 	
 	
