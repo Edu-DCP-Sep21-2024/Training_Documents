@@ -1,0 +1,63 @@
+
+*************************************************************************************************************************************************
+
+Overview:
+~~~~~~~~~~
+
+1. Deploy Pod on "all" worker nodes inside k8s cluster using DaemonSet
+
+   1a. fluentd-DaemonSet manifest file
+   1b. Create | Display | Validate
+
+3. Cleanup
+
+*************************************************************************************************************************************************
+
+
+1. Deploy Pod on "all" worker nodes inside k8s cluster using DaemonSet
+
+1a. YAML File:
+--------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# fluentd-ds-allnodes.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-ds
+spec:
+  template:
+    metadata:
+      labels:
+        name: fluentd
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  selector:
+    matchLabels:
+      name: fluentd
+---------------------------------------------------------------------
+
+1b. Create | Display | Validate
+
+kubectl create -f fluentd-ds-allnodes.yaml
+kubectl get po -o wide
+kubectl get ds
+kubectl describe ds fluentd-ds
+
+*************************************************************************************************************************************************
+3. Ceanup
+
+kubectl delete ds fluentd-ds
+kubectl delete ds nginx-ds
+kubectl get po
+
+*************************************************************************************************************************************************
+
+
+
+
+
+
+ 
