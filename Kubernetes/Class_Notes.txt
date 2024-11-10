@@ -352,4 +352,108 @@ Next :
 		
 	
 	
+#######################
+Day 11 - 10th Nov. 2024
+#######################			
+
+
+	- Kubernetes Services 
+		- NodePort Service
+		- ClusterIP Service 	# Internal Communication between the pods
+		- Load Balancer
+		
+		- Ingress Service! - Ingress Rules ::::
+		
+		
+		Application :
+		
+		www.google.com 	--> x.x.x.x ==> LB IP at Application Level 
+		
+			Maps 
+			Translate 
+			Mail 
+			Drive 
+			
+		Ingress Rules: Used to Routing the Requests:
+		
+			- Simple Routing 							# Static Web Page 				
+		
+			- Host Based Routing 
+			
+				- www.maps.google.com 
+				- www.translate.google.com
+				- www.drive.google.com
+				- www.mail.google.com
+				
+			
+			- Path Based Routing 
+			
+				- www.mail.google.com/inbox 		==> GKE 
+				- www.mail.google.com/sent 
+				- www.mail.google.com/trash 
+		
+
+		3 - Tier Application :
+		
+			Front-End				P1,1,1,1
+			
+			Application_Layer		P2,2,2,2
+			
+			Back-End 				P3,3,3,3
+
+
+	- Kubernetes Volumes 
+		- ConfigMaps 
+		- Secrets
+		- HostPath Volume
+		- Persistant Volumes 
+		- Persistant Volume Claim
+
+		- ConfigMaps  		# Used to handle any data which is non-sensitive
+							# These data can be accessible even out-side the pod 
+							
+		- Secrets			# Used to handle any data which is sensitive
+							# These data can be accessible only within the pod.
+
+		- Persistant Volumes 
+		
+		- Persistant Volume Claim
+		
+
+	- Namespace ::::		# Logical partitioning of the Kubernetes Cluster
 	
+	
+		Environments
+		
+			Dev 
+			
+			QA 
+			
+			UAT 
+			
+			PROD 
+			
+			
+			Non-Prod :
+			
+				K_Master 
+					K_WorkerNode1,2,3,4,5
+					
+					
+			
+			kubecl create namespace dev
+			
+			kubectl get pods --namespace=dev
+			
+			
+	- HELM Charts 	::::
+	
+		- Package Manage for Kubernetes Cluster 	
+
+Next :
+				
+	Fundamentals of Terraform :::
+
+	Fundamentals of Prometheus/Grafana :::	
+
+	CD/CD Demo
