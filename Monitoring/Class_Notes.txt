@@ -1,0 +1,62 @@
+#######################
+Day 13 - 10th Nov. 2024
+#######################	
+
+	Fundamentals of Prometheus/Grafana :::
+	
+	Continuous Monitoring :::
+	
+		- Used to Continuously Monitor the Production Environments and Applications to ensure high availability and business Continuity
+		- Completely owned and managed by the Production Monitoring Team
+		
+		
+		Infra-Structure Monitoring 	:::
+		
+			--> CPU/Memory/Network Traffic 
+			
+			Monitoring Tools : Prometheus/Grafana/Dynatrace 
+			
+			1000 Users ==> 10 WNodes
+
+			
+		
+		Application Monitoring :::
+		
+			--> Application Responses 
+			
+				Upstream/DownStream Dependencies --> Database Queries 
+				
+			Application Monitoring Tools : AppDynamics/DataDog
+					
+	
+
+		Prometheus		# Infra-Structure Monitoring Tool 
+		
+		Grafana			# Visualization Tool  
+		
+		
+		- Architecture of Monitoring Tool 
+		
+		- Installation & Configuration of Prometheus & Grafana
+		
+		Prod_Server --> CPU 100% 
+		
+			80% TL - Alert --> Users Emails/Slack 
+			
+		- Installation & Configuration of Prometheus & Grafana
+			
+			
+				https://prometheus.io/download/
+	
+	
+			VM1 - Monitoring Server --> Install Prometheus & Grafana 
+			
+			VM2 - Target Machine 	--> Install Node Exporter Agent.
+			
+	
+	
+Next :
+
+	Demo : Prometheus/Grafana 
+	
+	Demo : CICD Pipeline 
