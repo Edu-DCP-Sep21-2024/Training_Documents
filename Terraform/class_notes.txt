@@ -1,0 +1,127 @@
+#######################
+Day 13 - 10th Nov. 2024
+#######################		
+	
+	Fundamentals of Terraform :::
+
+	Fundamentals of Prometheus/Grafana :::
+	
+	
+	
+	Fundamentals of Terraform :::
+	
+		- IAC -> Infra-Structure As Code.
+		
+			Provision/Create the IT Resources	--> 	Terraform/Cloudformation/ARM
+			
+			Configure/Manage the IT Resources	-->		Ansible/Chef/Puppet 
+			
+			
+		Terraform :::
+		
+		- Architecture of Terraform :
+		
+		- Working Process of Terraform :
+		
+			--> Identify the Scope 				# Identify the traget environment (AWS/Az/GCP)	
+			
+			--> Write the Terraform Script 		# Define the Resources with Terraform Provider(AWS/Az/GCP)
+			
+			--> Perform Terraform Init			# Initialize/Download the Terraform Provider to the Terraform Project 
+			
+			-->	Perform Terraform Plan			# Preview the Terraform Script.
+			
+			--> Perform Terraform Apply			# Implement the Changes in the Target Environment
+			
+		- Functionalities :
+		
+			--> Create/Add Resources			+ 			
+			
+			--> Modify/Change Resources 		~ 
+			
+			--> Delete/Destroy Resources		-
+		
+		
+		Working with Terraform ::
+		
+			- Install Terraform on Local Windows Machine 
+			
+				--> https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+				--> https://developer.hashicorp.com/terraform/install		# Manual Installation
+						Download AMD64 for Windows
+							- Download Terraform Binaries - *.zip file 
+							- Extract *.zip file 
+							- Upon Extraction, you can find terraform.exe in that folder
+							
+							- Create Environment Variable for Terraform
+								Add terraform executable to the PATH Varible at System Level.
+								
+									C:\Softwares\terraform_1.7.2_windows_amd64
+									
+									Goto Start Menu
+										- Select Edit Environment Variable
+											- System Properties 
+												- Under System Variable 
+													- Edit path varible 
+														- Add New Path : C:\Softwares\terraform_1.7.2_windows_amd64
+														- Apply & Close
+			
+			- Install Visual Studio Code to Create Terraform Scripts 
+				--> https://code.visualstudio.com/download
+		
+						- Install Hashicorp Terraform Extension for Visual Studion Code 
+
+						- Open New PS Terminal within Visual Studio Code 
+						
+							terraform --version 
+
+			- Working with Terraform Providers :
+			
+				https://registry.terraform.io/?product_intent=terraform
+
+		- Working Process of Terraform :
+		
+			--> Identify the Scope 				# Identify the target environment (AWS/Az/GCP)	
+			
+			--> Write the Terraform Script 		# Define the Resources with Terraform Provider(AWS/Az/GCP)
+			
+			--> Perform Terraform Init			# Initialize/Download the Terraform Provider to the Terraform Project 
+			
+			-->	Perform Terraform Plan			# Preview the Terraform Script.
+			
+			--> Perform Terraform Apply			# Implement the Changes in the Target Environment
+			
+			
+		1. Create Terraform Project in VS Code 
+		
+		2. Open Terminal 
+		
+		3. Create Terraform Script :
+		
+			- Provider 
+			
+				- aws 
+				- region 			ap-south-1
+				- Access Key 		Adfgsdfgdsfg2
+				- Secret Key		4dfgdfgG
+
+			- Resources
+			
+				resource "aws_instance" "web" {
+				  ami           = data.aws_ami.ubuntu.id
+				  instance_type = "t3.micro"
+
+				  tags = {
+					Name = "HelloWorld"
+				  }
+				}
+
+		4. terraform init 
+		
+		5. terraform plan 
+		
+		6. terraform apply 
+
+		Terraform State File :
+		
+			- Used to maintain the state of the actual resource
