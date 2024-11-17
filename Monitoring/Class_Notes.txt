@@ -60,3 +60,22 @@ Next :
 	Demo : Prometheus/Grafana 
 	
 	Demo : CICD Pipeline 
+
+
+
+#######################
+Day 14 - 17th Nov. 2024
+#######################	
+
+
+	Prometheus/Grafana -- Configurations :::
+	
+	Monitoring Server (VM)
+	
+		- Target Machine (VM)
+		
+		
+		Ubuntu AMI	- ubuntu (user_name)
+		
+		Amazon Linux2 - ec2-user (user_name)
+		
