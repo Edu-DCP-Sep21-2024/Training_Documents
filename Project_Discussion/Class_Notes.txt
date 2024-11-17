@@ -1,0 +1,211 @@
+#######################
+Day 14 - 17th Nov. 2024
+#######################	
+
+
+	CICD Pipeline :::
+	
+	Stages ::
+
+pipeline {
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+				
+            }
+        }
+        stage('Deploy to QA Environment') {
+            steps {
+                script{
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'Edu-Tomcat-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }
+            }
+        }
+    }
+}	
+
+Use-Case 1 :
+
+	- Using Docker and Kubernetes deploy the Containerised Application Service thru Jenkins CICD Pipeline.
+	- https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbootwebapp.git
+	
+	
+	Onboard the Application to DevOps using Create CICD Pipeline :
+	
+	
+	Infra-Structure :
+	
+		Jenkins_Master (VM) 			# Create and Manage the Jenkins Projects and schedule to run in the build nodes.
+			Build_Server(VM) 			# Perform Build & Create Artifacts. - Build Application Artifacts and Build Application Images.
+		Kubernetes_Master				# Prepare Pods for Deployment
+			Kubernetes_WorkNode1
+			Kubernetes_WorkNode2
+			
+		
+	Tools :
+
+		Jenkins_Master (VM) 			# jdk,jenkin,git
+        	Build_Server(VM) 			# git,jdk,maven,Docker Engine
+        Kubernetes_Master				# CRI,kubeadm,kubectl,kubelet		
+        	Kubernetes_WorkNode1
+        	Kubernetes_WorkNode2
+
+
+	Server Integrations:
+	
+		Jenkins_Master should be integrated with Jenkins_Slave_Node & Kubernetes_Master
+		
+			-> Host_name 
+			-> User_Name
+			-> SSH Keys for Authentication
+	
+	Environments :
+	
+		Dev_Environment 
+		
+		Build_Environment 
+		
+		Target Environments (Kubernetes_Cluster)
+			- Dev 
+			- QA 
+			- UAT 
+		
+		
+			- PROD 
+	
+	
+	
+	CICD Pipeline :
+	
+	Stages :
+		
+		- SCM_Checkout
+		
+		- Application Build 
+		
+		- Application Image Build 
+	
+		- Login to Container Registry
+							docker login -u loksaieta
+			
+							djhvjvj
+		
+		- Push the Application Image to Container Registry 
+		
+		- Deploy to Kubernetes Cluster 
+	
+	
+	
+pipeline {
+    agent { label 'slave1' }
+	
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/Edu-DCP-Sep21-2024/java-mvn-springbapp.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+				
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+				sh 'docker version'
+				sh "docker build -t loksaieta/dcp-sep21-webapp:${BUILD_NUMBER} ."
+				sh 'docker image list'
+				sh "docker tag loksaieta/dcp-sep21-webapp:${BUILD_NUMBER} loksaieta/dcp-sep21-webapp:latest"
+            }
+        }
+		stage('Login2DockerHub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Publish_to_Docker_Registry') {
+			steps {
+				sh "docker push loksaieta/dcp-sep21-webapp:latest"
+			}
+		}
+        stage('Deploy to Kubernetes') {
+            steps {
+                script{
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes-Master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f kubedeploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }
+            }
+        }		
+    }
+}
+
+
+
+
+sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes-Master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f kubedeploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
+
+kubectl create namespace qa
+
+kubectl create -f kubedeploy.yaml
+
+kubectl apply -f kubedeploy.yaml
+
+
+vi kubedeploy.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loksai-eta-deploy
+  namespace: qa
+  labels:
+    app: loksai-eta-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loksai-eta-app
+  template:
+    metadata:
+      labels:
+        app: loksai-eta-app
+    spec:
+      containers:
+      - name: loksai-eta-container
+        image: loksaieta/sa-wd-webapp
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loksai-eta-np-service
+  labels:
+    app: loksai-eta-app
+spec:
+  selector:
+    app: loksai-eta-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080
